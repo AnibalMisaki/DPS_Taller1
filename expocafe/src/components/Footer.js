@@ -2,6 +2,7 @@ import { RefreshControlBase } from "react-native";
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import colors from '../utils/colors';
+import Result from "./Result";
 
 export default function Footer(props) {
     const {calculate} = props;
@@ -10,6 +11,7 @@ export default function Footer(props) {
             <TouchableOpacity style={styles.button} onPress={calculate}>
                 <Text style={styles.text}>CALCULAR</Text>
             </TouchableOpacity>
+            
         </View>
     );
 }

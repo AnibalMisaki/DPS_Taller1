@@ -7,7 +7,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import {SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, useColorScheme, View} from 'react-native';
+import {SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, useColorScheme, View, TouchableOpacity} from 'react-native';
 import Form from './src/components/Form';
 import colors from './src/utils/colors';
 import Result from './src/components/Result';
@@ -17,14 +17,11 @@ export default function App(){
   const [cafe, setCafe] = useState(null);
   const [pago, setPago] = useState(null);
   const [cantidad, setCantidad] = useState(null);
+  const [descuento, setDescuento] = useState(null);
   const [total, setTotal] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
-  var tam, tipo, descuento;     
+  var tam, tipo, desapp;     
 
-  useEffect(() => {
-    if (tamaño && cafe && pago && cantidad) calculate();
-    else reset();
-  }, [tamaño, cafe, pago, cantidad]);
   const calculate = () => {
     reset();
     if (!tamaño) {
@@ -54,12 +51,14 @@ export default function App(){
         tipo = 3;
       }
       if(pago == "Efectivo"){
-        descuento = ((tam + tipo) * cantidad) * 0.15;
+        setDescuento(0.15);
+        desapp = ((tam + tipo) * cantidad) * 0.15;
       }else if(pago == "Credito"){
-        descuento = ((tam + tipo) * cantidad) * 0.05;
+        setDescuento(0.05);
+        desapp = ((tam + tipo) * cantidad) * 0.05;
       }
-      setTotal((((tam + tipo) * cantidad) - descuento).toFixed(2));
-  }
+      setTotal((((tam + tipo) * cantidad) - desapp).toFixed(2));
+    }
  };
 
   const reset = () => {
@@ -81,14 +80,20 @@ export default function App(){
         />
       </SafeAreaView>
       <Result
-        tamaño={tamaño}
-        cafe={cafe}
-        pago={pago}
-        cantidad={cantidad}
-        total={total}
-        errorMessage={errorMessage}
-      />
-      <Footer calculate={calculate} />
+          tamaño={tamaño}
+          cafe={cafe}
+          pago={pago}
+          cantidad={cantidad}
+          total={total}
+          descuento={descuento}
+          errorMessage={errorMessage}
+        />
+      <TouchableOpacity style={styles.button} onPress={calculate}>
+        <Text style={styles.text} >Comprar</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button1} onPress={calculate}>
+        <Text style={styles.text} >Vaciar</Text>
+      </TouchableOpacity>
     </>
   );
 };
@@ -97,6 +102,27 @@ const styles = StyleSheet.create({
     height: 290,
     alignItems: 'center',
   },
+  button: {
+      position: 'absolute',
+        bottom: 0,
+        width: '50%',
+        backgroundColor: colors.PRIMARY_COLOR,
+        height: 100,
+        alignItems: 'center',
+        justifyContent: 'center',
+  },
+  button1: {
+    position: 'absolute',
+    borderLeftWidth: 1,
+    borderLeftColor: "white",
+      bottom: 0,
+      width: '50%',
+      backgroundColor: colors.PRIMARY_COLOR,
+      height: 100,
+      left: "50%",
+      alignItems: 'center',
+      justifyContent: 'center',
+},
   background: {
     backgroundColor: colors.PRIMARY_COLOR,
     height: 300,
@@ -111,5 +137,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#fff',
     marginTop: 15,
+  },
+  text: {
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: '#fff',
+    textAlign: 'center',
   },
 });

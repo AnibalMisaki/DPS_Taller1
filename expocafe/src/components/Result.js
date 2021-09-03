@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 export default function Result(props) {
-    const {tamaño, cafe, pago, cantidad, total, errorMessage} = props;
+    const {tamaño, cafe, pago, cantidad, descuento, total, errorMessage} = props;
     return (
         <View style={styles.content}>
             {total && (
                 <View style={styles.boxResult}>
                     <Text style={styles.title}>RESUMEN</Text>
-                    <DataResult title="Cantidad solicitada:" value={`${cantidad}`} />
                     <DataResult title="Tamaño:" value={`${tamaño}`} />
                     <DataResult title="Tipo de bebida:" value={`${cafe}`} />
                     <DataResult title="Forma de pago:" value={`${pago}`} />
+                    <DataResult title="Cantidad solicitada:" value={`${cantidad}`} />
+                    <DataResult title="Descuento %:" value={`${descuento * 100}%`} />
                     <DataResult title="Total a pagar:" value={`$${total} `}/>
                 </View>
             )}
