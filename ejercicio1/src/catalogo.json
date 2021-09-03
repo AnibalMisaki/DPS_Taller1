@@ -1,0 +1,64 @@
+{
+    "Productos":[
+        {
+            "id": 1,
+            "nombre": "ARROZ BLANCO (4LB)",
+            "precio": 1.90
+        },
+        {
+            "id": 2,
+            "nombre": "ARROZ INTEGRAL (1LB)",
+            "precio": 0.83
+        },
+        {
+            "id": 3,
+            "nombre": "CARNE MOLIDA PREMIUM (LB)",
+            "precio": 4.10
+        },
+        {
+            "id": 4,
+            "nombre": "DESODORANTE OLD SPICE",
+            "precio": 3.71
+        },
+        {
+            "id": 5,
+            "nombre": "FRIJOL ROJO DE SEDA (4LB)",
+            "precio": 4.80
+        },
+        {
+            "id": 6,
+            "nombre": "JAMON DE PAVO 290g",
+            "precio": 2.57
+        },
+        {
+            "id": 7,
+            "nombre": "MANZANA FUJI (LB)",
+            "precio": 1.65
+        },
+        {
+            "id": 8,
+            "nombre": "PAN DE CAJA INTEGRAL",
+            "precio": 1.94
+        },
+        {
+            "id": 9,
+            "nombre": "PERA VERDE (LB)",
+            "precio": 1.65
+        },
+        {
+            "id": 10,
+            "nombre": "PECHUGA DE POLLO CON HUEZO (LB)",
+            "precio": 1.60
+        },
+        {
+            "id": 11,
+            "nombre": "QUESO PETACON 400g",
+            "precio": 4.94
+        },
+        {
+            "id": 12,
+            "nombre": "SHAMPOO HEAD&SHOULDERS FOR MEN 700ML 2 EN1",
+            "precio": 9.98
+        }
+    ]
+}

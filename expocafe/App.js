@@ -6,12 +6,11 @@
  * @flow strict-local
  */
 
-import React, { useState, useEffect } from 'react';
-import {SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, useColorScheme, View, TouchableOpacity} from 'react-native';
+import React, { useState } from 'react';
+import {SafeAreaView, StatusBar, StyleSheet, Text, View, TouchableOpacity, Alert, Image} from 'react-native';
 import Form from './src/components/Form';
 import colors from './src/utils/colors';
 import Result from './src/components/Result';
-import Footer from './src/components/Footer';
 export default function App(){
   const [tamaño, setTamaño] = useState(null);
   const [cafe, setCafe] = useState(null);
@@ -25,13 +24,29 @@ export default function App(){
   const calculate = () => {
     reset();
     if (!tamaño) {
-      setErrorMessage('Añade el tamaño de tu bebida');
+      Alert.alert("Error", "Añade el tamaño de tu bebida",[
+        {
+          text: "Ok",
+        },
+      ],)
     } else if (!cafe) {
-      setErrorMessage('Añade el tipo de bebida que deseas');
+      Alert.alert("Error", "Añade el tipo de bebida que deseas",[
+        {
+          text: "Ok",
+        },
+      ],)
     } else if (!pago) {
-      setErrorMessage('Selecciona un metodo de pago');
+      Alert.alert("Error", "Añade el metodo de pago",[
+        {
+          text: "Ok",
+        },
+      ],)
     }else if(!cantidad){
-      setErrorMessage('Añade la cantidad de bebidas que deseas');
+      Alert.alert("Error", "Añade la cantidad de bebidas que deseas",[
+        {
+          text: "Ok",
+        },
+      ],)
     } 
     else {
       if(tamaño == "Pequeño"){
@@ -71,7 +86,8 @@ export default function App(){
       <StatusBar barStyle="light-content"/>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.background} />
-        <Text style={styles.titleApp}>Expo Cafe</Text>
+        <Text style={styles.titleApp}>Expo Cafe </Text>
+       
         <Form
           setCafe={setCafe}
           setTamaño={setTamaño}
@@ -91,7 +107,7 @@ export default function App(){
       <TouchableOpacity style={styles.button} onPress={calculate}>
         <Text style={styles.text} >Comprar</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button1} onPress={calculate}>
+      <TouchableOpacity style={styles.button1} onPress={reset}>
         <Text style={styles.text} >Vaciar</Text>
       </TouchableOpacity>
     </>
@@ -143,5 +159,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#fff',
     textAlign: 'center',
+  },
+  img:{
+    width: 25,
+    height: 25,
   },
 });

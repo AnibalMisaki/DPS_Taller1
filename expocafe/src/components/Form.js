@@ -1,6 +1,7 @@
 import React from "react";
 import {StyleSheet, TextInput,Text, View, TouchableOpacity} from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
+import RCTModalHostViewNativeComponent from "react-native/Libraries/Modal/RCTModalHostViewNativeComponent";
 import colors from "../utils/colors";
 
 export default function Form(props){
@@ -17,7 +18,7 @@ export default function Form(props){
                 items={[
                     {label: 'Pequeño $1.00', value: "Pequeño"},
                     {label: 'Mediano $1.50', value: "Mediano"},
-                    {label: 'Grande "2.00', value: "Grande"},
+                    {label: 'Grande $2.00', value: "Grande"},
                 ]}
             />
             <RNPickerSelect 
